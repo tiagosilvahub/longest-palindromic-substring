@@ -87,6 +87,8 @@ private int expandAroundCenter(String s, int left, int right) {
 Manacher's Algorithm implementation:
 O(n) in time
 
+https://medium.com/hackernoon/manachers-algorithm-explained-longest-palindromic-substring-22cb27a5e96f
+
 ```
 public String solve(String s) {
     int sLength = s.length();
