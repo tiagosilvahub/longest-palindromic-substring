@@ -50,36 +50,14 @@ Instead of thinking in terms of were a palindrome can start and finish, we can c
 
 The center of a palindrome can be in a letter, or between two letters. There are 2*n - 1 possible centers
 
-For each of them, we can expand while we see the same character on both sides, saving the max size found.
+For each of them, we can expand while we see the same character on both sides.
+
+If the length of the current found palindrome is the biggest we have found so far, we save the left and right positions.
 
 Reaching the solution in O(n^2) time
 
 ```
-public String solve(String s) {
-    if (s == null || s.length() < 1){
-        return "";
-    }
-    int start = 0, end = 0;
-    for (int i = 0; i < s.length(); i++) {
-        int len1 = expandAroundCenter(s, i, i);
-        int len2 = expandAroundCenter(s, i, i + 1);
-        int len = Math.max(len1, len2);
-        if (len > end - start) {
-            start = i - (len - 1) / 2;
-            end = i + len / 2;
-        }
-    }
-    return s.substring(start, end + 1);
-}
 
-private int expandAroundCenter(String s, int left, int right) {
-    int L = left, R = right;
-    while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) {
-        L--;
-        R++;
-    }
-    return R - L - 1;
-}
 ```
 
 
